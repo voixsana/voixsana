@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Voix Sana">
+  <rect width="64" height="64" rx="14" fill="#FBF7F1"/>
+  <path d="M14 35c0-11 8-19 18-19 8 0 14 4 18 12" fill="none" stroke="#C97B5A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 29c0 11-8 19-18 19-8 0-14-4-18-12" fill="none" stroke="#4A2F38" stroke-width="4" stroke-linecap="round"/>
+</svg>
