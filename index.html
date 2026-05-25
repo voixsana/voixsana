@@ -637,11 +637,11 @@
         });
       });
 
-      /* Une seule vidéo de témoignage à la fois */
-      const inlineVideos = document.querySelectorAll('.testimonial video');
-      inlineVideos.forEach(function (video) {
+      /* Une seule vidéo à la fois sur toute la page */
+      const allVideos = document.querySelectorAll('video');
+      allVideos.forEach(function (video) {
         video.addEventListener('play', function () {
-          inlineVideos.forEach(function (other) {
+          allVideos.forEach(function (other) {
             if (other !== video && !other.paused) other.pause();
           });
         });
