@@ -815,7 +815,7 @@ strong { font-weight: 500; }
 
 /* Mobile : ratios fixes */
 .sonia-images .image-frame:first-child {
-  aspect-ratio: 6 / 5;
+  aspect-ratio: 8 / 5;
 }
 
 .sonia-images .image-frame:first-child img {
@@ -919,6 +919,19 @@ strong { font-weight: 500; }
 .surface-terre .price { color: var(--color-prune-profond); }
 .surface-terre .info-list { color: var(--color-prune-profond); }
 .surface-terre .info-list li::before { background-color: var(--color-prune-profond); }
+/* btn-primary sur surface-terre : fond identique → on bascule vers prune pour le contraste */
+.surface-terre .btn-primary {
+  background-color: var(--color-prune-profond);
+  color: var(--color-creme);
+  border-color: var(--color-prune-profond);
+  box-shadow: 0 1px 2px rgba(74, 47, 56, 0.10), 0 6px 18px rgba(74, 47, 56, 0.20);
+}
+.surface-terre .btn-primary:hover,
+.surface-terre .btn-primary:focus-visible {
+  background-color: rgba(74, 47, 56, 0.80);
+  border-color: rgba(74, 47, 56, 0.80);
+  color: var(--color-creme);
+}
 
 .info-list {
   list-style: none;
