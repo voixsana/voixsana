@@ -178,24 +178,24 @@
 
         <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
       </div>
-
-      <div class="mobile-drawer" data-mobile-drawer>
-        <button class="mobile-overlay" aria-label="Fermer le menu" data-close-drawer></button>
-        <div class="mobile-panel">
-          <nav aria-label="Navigation mobile">
-            <a href="#accompagnement" data-close-drawer>Accompagnement</a>
-            <a href="#voix-sana" data-close-drawer>La pratique</a>
-            <a href="#sonia" data-close-drawer>Sonia</a>
-            <a href="#tarifs" data-close-drawer>Tarifs</a>
-            <a href="#temoignages" data-close-drawer>Témoignages</a>
-            <a href="#faq" data-close-drawer>FAQ</a>
-            <a href="#questionnaire" data-close-drawer>Définir ma relation</a>
-            <a href="#contact" data-close-drawer>Contact</a>
-          </nav>
-          <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer" data-close-drawer>Prendre RDV</a>
-        </div>
-      </div>
     </header>
+
+    <!-- Drawer mobile hors du header (sinon `backdrop-filter` du header le confine et casse position:fixed) -->
+    <div class="mobile-drawer" data-mobile-drawer>
+      <button class="mobile-overlay" aria-label="Fermer le menu" data-close-drawer></button>
+      <div class="mobile-panel">
+        <nav aria-label="Navigation mobile">
+          <a href="#accompagnement" data-close-drawer>Accompagnement</a>
+          <a href="#voix-sana" data-close-drawer>La pratique</a>
+          <a href="#sonia" data-close-drawer>Sonia</a>
+          <a href="#tarifs" data-close-drawer>Tarifs</a>
+          <a href="#temoignages" data-close-drawer>Témoignages</a>
+          <a href="#faq" data-close-drawer>FAQ</a>
+          <a href="#questionnaire" data-close-drawer>Définir ma relation</a>
+          <a href="#contact" data-close-drawer>Contact</a>
+        </nav>
+      </div>
+    </div>
 
     <main id="main-content">
       <section class="section hero">
@@ -289,7 +289,7 @@
               <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
             </article>
 
-            <article class="card surface-creme-clair">
+            <article class="card surface-terre">
               <h3>Séance collective</h3>
               <ul class="info-list">
                 <li>Durée : 2 heures</li>
@@ -440,7 +440,7 @@
               <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Réserver sur Medoucine</a>
             </article>
 
-            <article class="card surface-creme-clair">
+            <article class="card surface-sauge">
               <h3>M'écrire un message</h3>
               <p>Pour toute question, partage, ou demande d'information.</p>
               <a class="btn btn-primary" href="mailto:voix.sana@gmail.com">Envoyer un e-mail</a>
@@ -482,24 +482,31 @@
       function openDrawer() {
         drawer.classList.add('is-open');
         burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Fermer le menu');
         document.body.style.overflow = 'hidden';
       }
 
       function closeDrawer() {
         drawer.classList.remove('is-open');
         burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Ouvrir le menu');
         document.body.style.overflow = '';
         burger.focus();
       }
 
-      burger.addEventListener('click', openDrawer);
+      function toggleDrawer() {
+        if (drawer.classList.contains('is-open')) closeDrawer();
+        else openDrawer();
+      }
+
+      burger.addEventListener('click', toggleDrawer);
 
       drawer.querySelectorAll('[data-close-drawer]').forEach(function (el) {
         el.addEventListener('click', closeDrawer);
       });
 
-      drawer.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeDrawer();
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
       });
     }
 

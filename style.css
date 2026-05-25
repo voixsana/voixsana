@@ -40,6 +40,11 @@
   --border-radius: 12px;
   --border-radius-lg: 20px;
   --transition: 200ms ease;
+
+  /* Ombres douces (teinte prune) — élévation discrète */
+  --shadow-soft: 0 1px 2px rgba(74, 47, 56, 0.04), 0 4px 16px rgba(74, 47, 56, 0.06);
+  --shadow-hover: 0 2px 4px rgba(74, 47, 56, 0.05), 0 12px 28px rgba(74, 47, 56, 0.10);
+  --border-soft: 1px solid rgba(74, 47, 56, 0.08);
 }
 
 
@@ -94,12 +99,25 @@ a:focus-visible {
 h1, h2 {
   font-family: var(--font-serif);
   color: var(--color-mauve-doux);
-  line-height: 1.2;
+  line-height: 1.15;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
+
+/* Petit ornement sous les h2 de section pour rythmer la lecture */
+.section-inner > .content-narrow h2::after,
+.split-layout h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-top: 0.6rem;
+  background: linear-gradient(90deg, var(--color-terre-claire), var(--color-terre-saturee));
+  border-radius: 2px;
+}
 
 h3, h4, h5, h6 {
   font-family: var(--font-sans);
@@ -162,18 +180,22 @@ strong { font-weight: 500; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xs);
-  padding: 0.75rem 1.75rem;
-  border-radius: var(--border-radius);
+  padding: 0.85rem 1.85rem;
+  border-radius: 999px;
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+  transition: background-color var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition),
+              box-shadow var(--transition);
   border: 1px solid transparent;
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .btn:focus-visible {
@@ -185,13 +207,18 @@ strong { font-weight: 500; }
   background-color: var(--color-terre-claire);
   color: var(--color-prune-profond);
   border-color: var(--color-terre-claire);
+  box-shadow: 0 1px 2px rgba(74, 47, 56, 0.06), 0 6px 18px rgba(201, 123, 90, 0.18);
 }
 
 .btn-primary:hover, .btn-primary:focus-visible {
   background-color: var(--color-terre-saturee);
   color: var(--color-creme);
   border-color: var(--color-terre-saturee);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(74, 47, 56, 0.08), 0 14px 28px rgba(201, 123, 90, 0.28);
 }
+
+.btn-primary:active { transform: translateY(0); }
 
 .btn-secondary {
   background-color: transparent;
@@ -202,6 +229,16 @@ strong { font-weight: 500; }
 .btn-secondary:hover, .btn-secondary:focus-visible {
   background-color: var(--color-prune-profond);
   color: var(--color-creme);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(74, 47, 56, 0.08), 0 10px 20px rgba(74, 47, 56, 0.18);
+}
+
+.btn-secondary:active { transform: translateY(0); }
+
+/* Variante compacte pour la CTA en mobile */
+.btn-compact {
+  padding: 0.55rem 1.1rem;
+  font-size: var(--fs-small);
 }
 
 /* --- Navigation sticky --- */
@@ -209,11 +246,11 @@ strong { font-weight: 500; }
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background-color: var(--color-creme);
-  border-bottom: 1px solid rgba(74, 47, 56, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  z-index: 110; /* au-dessus du drawer mobile pour que le burger (X) reste cliquable */
+  background-color: rgba(251, 247, 241, 0.85);
+  border-bottom: 1px solid rgba(74, 47, 56, 0.08);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
 .nav-wrap {
@@ -269,9 +306,10 @@ strong { font-weight: 500; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
@@ -279,17 +317,20 @@ strong { font-weight: 500; }
   border-radius: var(--border-radius);
   transition: background-color var(--transition);
   flex-shrink: 0;
+  position: relative;
+  z-index: 102; /* au-dessus du drawer mobile pour rester cliquable */
 }
 
 .menu-toggle:hover { background-color: rgba(74, 47, 56, 0.06); }
 
 .menu-toggle span {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2px;
   background-color: var(--color-prune-profond);
   border-radius: 2px;
   transition: transform var(--transition), opacity var(--transition);
+  transform-origin: center;
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -304,21 +345,38 @@ strong { font-weight: 500; }
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* CTA dans la barre de menu : compacte, alignée typographiquement avec les liens */
+.nav-wrap > .btn {
+  padding: 0.55rem 1.15rem;
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
 @media (max-width: 899px) {
-  .menu-toggle { margin-left: auto; }
-  .nav-wrap > .btn { display: none; }
+  /* Ordre en mobile : logo · CTA · burger */
+  .nav-wrap > .btn {
+    order: 2;
+    margin-left: auto;
+  }
+  .menu-toggle { order: 3; }
+  .brand { order: 1; }
+}
+
+@media (max-width: 380px) {
+  /* Sur très petits écrans : raccourcir la CTA */
+  .nav-wrap > .btn { padding: 0.5rem 0.9rem; }
 }
 
 @media (min-width: 900px) {
   .menu-toggle { display: none; }
 }
 
-/* Drawer mobile */
+/* Drawer mobile (au niveau body, pas dans le header — sinon le backdrop-filter le confine) */
 .mobile-drawer {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 101;
+  z-index: 105; /* sous le header (110) pour que le burger en X reste cliquable */
 }
 
 .mobile-drawer.is-open { display: block; }
@@ -326,25 +384,32 @@ strong { font-weight: 500; }
 .mobile-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(74, 47, 56, 0.4);
+  background-color: rgba(74, 47, 56, 0.45);
   width: 100%;
   border: none;
   cursor: pointer;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  animation: fadeIn 200ms ease;
 }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
 .mobile-panel {
   position: absolute;
   top: 0;
   right: 0;
-  width: min(320px, 85vw);
+  width: min(340px, 88vw);
   height: 100%;
   background-color: var(--color-creme);
-  padding: var(--space-md) var(--space-lg);
+  padding: calc(72px + var(--space-md)) var(--space-lg) var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   overflow-y: auto;
-  box-shadow: -4px 0 24px rgba(74, 47, 56, 0.15);
+  box-shadow: -4px 0 32px rgba(74, 47, 56, 0.18);
+  animation: slideInRight 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .mobile-panel nav {
@@ -353,19 +418,21 @@ strong { font-weight: 500; }
 }
 
 .mobile-panel nav a {
-  font-size: 1.1rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
   font-weight: 500;
   color: var(--color-prune-profond);
   text-decoration: none;
   display: block;
-  padding: var(--space-xs) 0;
-  border-bottom: 1px solid rgba(74, 47, 56, 0.1);
-  transition: color var(--transition);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(74, 47, 56, 0.08);
+  transition: color var(--transition), padding-left var(--transition);
 }
 
-.mobile-panel nav a:hover { color: var(--color-terre-saturee); }
-
-.mobile-panel > .btn { justify-content: center; }
+.mobile-panel nav a:hover, .mobile-panel nav a:focus-visible {
+  color: var(--color-terre-saturee);
+  padding-left: 6px;
+}
 
 /* --- Cartes --- */
 
@@ -373,15 +440,37 @@ strong { font-weight: 500; }
   background-color: var(--color-creme-clair);
   border-radius: var(--border-radius-lg);
   padding: var(--space-lg);
+  border: var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .card h3 { margin-bottom: var(--space-sm); }
 
-.surface-sable { background-color: var(--color-sable-clair); }
+/* Élévation au survol sur les cartes "informatives" (pas les cartes pleines) */
+.grid-cards .card,
+.pricing-grid .card,
+.contact-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-cards .card:hover,
+.pricing-grid .card:hover,
+.contact-grid .card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.surface-sable {
+  background-color: var(--color-sable-clair);
+  border-color: rgba(74, 47, 56, 0.06);
+}
 
 .surface-sauge {
   background-color: var(--color-sauge-pale);
   color: var(--color-sauge-fonce);
+  border-color: rgba(47, 58, 42, 0.12);
 }
 
 .surface-sauge h3 { color: var(--color-sauge-fonce); }
@@ -390,9 +479,18 @@ strong { font-weight: 500; }
 .surface-terre {
   background-color: var(--color-terre-claire);
   color: var(--color-prune-profond);
+  border-color: rgba(74, 47, 56, 0.10);
 }
 
-.surface-creme-clair { background-color: var(--color-creme-clair); }
+/* Carte crème-clair : visible même sur fond crème-clair grâce à la bordure et l'ombre */
+.surface-creme-clair {
+  background-color: var(--color-creme-clair);
+  border: 1px solid rgba(74, 47, 56, 0.12);
+  box-shadow: 0 1px 2px rgba(74, 47, 56, 0.04), 0 8px 24px rgba(74, 47, 56, 0.08);
+}
+
+/* La CTA dans une carte se cale en bas pour égaliser les hauteurs */
+.card .btn { align-self: flex-start; margin-top: auto; }
 
 /* --- FAQ --- */
 
@@ -404,13 +502,17 @@ strong { font-weight: 500; }
 
 [data-faq-root] details {
   border-radius: var(--border-radius);
-  border: 1px solid rgba(74, 47, 56, 0.15);
-  background-color: var(--color-creme-clair);
+  border: 1px solid rgba(74, 47, 56, 0.12);
+  background-color: var(--color-creme);
   overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
+
+[data-faq-root] details:hover { border-color: rgba(74, 47, 56, 0.25); }
 
 [data-faq-root] details[open] {
   border-color: var(--color-terre-claire);
+  box-shadow: 0 4px 16px rgba(201, 123, 90, 0.08);
 }
 
 [data-faq-root] summary {
@@ -465,6 +567,14 @@ strong { font-weight: 500; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.testimonial:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 .testimonial video {
@@ -475,12 +585,25 @@ strong { font-weight: 500; }
 }
 
 .testimonial blockquote {
+  position: relative;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: var(--color-mauve-doux);
-  line-height: 1.5;
-  padding: var(--space-md) var(--space-md) 0;
+  line-height: 1.55;
+  padding: var(--space-lg) var(--space-md) 0;
+}
+
+.testimonial blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.4rem;
+  left: var(--space-md);
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-terre-claire);
+  opacity: 0.6;
 }
 
 .testimonial cite {
@@ -489,7 +612,7 @@ strong { font-weight: 500; }
   font-size: var(--fs-small);
   color: var(--color-prune-leger);
   font-weight: 500;
-  padding: var(--space-xs) var(--space-md) 0;
+  padding: var(--space-sm) var(--space-md) 0;
 }
 
 .testimonial details {
@@ -545,14 +668,21 @@ strong { font-weight: 500; }
 /* --- Fonds des sections — alternance pour éviter deux fonds identiques adjacents --- */
 
 .hero                   { background-color: var(--color-creme); padding-top: calc(var(--space-xxl) + var(--space-lg)); }
-.section-accompagnement { background-color: var(--color-sable-clair); }    /* 2 */
-.section-pratique       { background-color: var(--color-creme-clair); }    /* 3 */
-.section-sonia          { background-color: var(--color-creme); }          /* 4 */
-.section-tarifs         { background-color: var(--color-creme-clair); }    /* 5 */
-.section-temoignages    { background-color: var(--color-sable-clair); }    /* 6 */
-.section-faq            { background-color: var(--color-creme); }          /* 7 */
-.section-questionnaire  { background-color: var(--color-sauge-pale); }    /* 8 */
-.section-contact        { background-color: var(--color-creme); }          /* 9 */
+.section-accompagnement { background-color: var(--color-creme-clair); }    /* 2 — cartes sable/sauge/terre se détachent */
+.section-pratique       { background-color: var(--color-creme); }          /* 3 */
+.section-sonia          { background-color: var(--color-creme-clair); }    /* 4 */
+.section-tarifs         { background-color: var(--color-creme); }          /* 5 — cartes sable/terre/sauge se détachent */
+.section-temoignages    { background-color: var(--color-sable-clair); }    /* 6 — testimonials crème-clair se détachent */
+.section-faq            { background-color: var(--color-creme-clair); }    /* 7 */
+.section-questionnaire  { background-color: var(--color-sauge-pale); }     /* 8 */
+.section-contact        { background-color: var(--color-creme); }          /* 9 — cartes sable/sauge se détachent */
+
+/* Contraste sur fond sauge : titre lisible + ornement adapté */
+.section-questionnaire h2 { color: var(--color-sauge-fonce); }
+.section-questionnaire h2::after {
+  background: linear-gradient(90deg, var(--color-sauge-fonce), rgba(47, 58, 42, 0.3));
+}
+.section-questionnaire p { color: var(--color-sauge-fonce); }
 
 /* --- Hero --- */
 
@@ -575,15 +705,19 @@ strong { font-weight: 500; }
   gap: var(--space-md);
 }
 
-.hero-layout h1 { margin-bottom: 0; }
+.hero-layout h1 {
+  margin-bottom: 0;
+  font-size: clamp(2.5rem, 5.5vw + 1rem, 4.25rem);
+}
 
 .hero-layout h1 em {
   font-style: italic;
   display: block;
+  color: var(--color-terre-saturee);
 }
 
 .hero-layout > div:first-child > p {
-  font-size: 1.05rem;
+  font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.2rem);
   color: var(--color-prune-leger);
   max-width: 48ch;
   line-height: 1.7;
@@ -706,11 +840,13 @@ strong { font-weight: 500; }
 
 .price {
   font-family: var(--font-serif);
-  font-size: 2.25rem;
-  color: var(--color-mauve-doux);
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: var(--color-terre-saturee);
   line-height: 1;
-  margin-top: var(--space-sm);
+  margin-top: var(--space-md);
   margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
 }
 
 .info-list {
@@ -724,7 +860,22 @@ strong { font-weight: 500; }
   color: var(--color-prune-leger);
 }
 
-.info-list li { margin-bottom: 0; }
+.info-list li {
+  margin-bottom: 0;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.info-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-terre-claire);
+}
 
 /* --- Témoignages grille --- */
 
@@ -749,7 +900,10 @@ strong { font-weight: 500; }
 .embed-shell {
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: var(--space-md);
+  border: 1px solid rgba(47, 58, 42, 0.12);
+  box-shadow: var(--shadow-soft);
 }
 
 .embed-shell iframe {
