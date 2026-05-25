@@ -8,6 +8,8 @@
   <title>Voix Sana — Reconstruction des femmes après une relation toxique ou un harcèlement · Antibes</title>
   <meta name="description"
     content="Sonia Maïolino t'accompagne dans ta reconstruction après une relation toxique, un harcèlement professionnel ou une perte d'alignement. Séances individuelles et collectives à Antibes ou en visio.">
+  <meta name="author" content="Sonia Maïolino">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://voixsana.github.io/voixsana/">
 
   <meta property="og:type" content="website">
@@ -61,7 +63,7 @@
             "description": "Accompagnement thérapeutique par la voix pour les femmes en reconstruction après une relation toxique, un harcèlement professionnel ou une perte d'alignement avec leurs valeurs.",
             "url": "https://voixsana.github.io/voixsana/",
             "email": "voix.sana@gmail.com",
-            "priceRange": "€€",
+            "priceRange": "€",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Le Jardin des Pins, 129 Bd Raymond Poincaré",
@@ -96,6 +98,40 @@
             "image": "https://voixsana.github.io/voixsana/images/sonia-portrait.webp",
             "url": "https://voixsana.github.io/voixsana/",
             "worksFor": { "@id": "https://voixsana.github.io/voixsana/#business" }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://voixsana.github.io/voixsana/#service-individuel",
+            "name": "Séance individuelle Voix Sana",
+            "description": "Séance individuelle d'accompagnement thérapeutique par la voix, sur mesure, pour les femmes en reconstruction. Durée 1 heure, en présentiel à Antibes ou en visio.",
+            "serviceType": "Accompagnement thérapeutique par la voix",
+            "provider": { "@id": "https://voixsana.github.io/voixsana/#business" },
+            "url": "https://voixsana.github.io/voixsana/#tarifs",
+            "offers": {
+              "@type": "Offer",
+              "price": "80",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+              "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+            },
+            "areaServed": ["Antibes", "Juan-les-Pins", "France"]
+          },
+          {
+            "@type": "Service",
+            "@id": "https://voixsana.github.io/voixsana/#service-collectif",
+            "name": "Séance collective Voix Sana",
+            "description": "Séance collective d'accompagnement thérapeutique par la voix, en petit groupe de 3 à 4 femmes. Durée 2 heures, en présentiel à Antibes ou en visio.",
+            "serviceType": "Accompagnement thérapeutique par la voix",
+            "provider": { "@id": "https://voixsana.github.io/voixsana/#business" },
+            "url": "https://voixsana.github.io/voixsana/#tarifs",
+            "offers": {
+              "@type": "Offer",
+              "price": "70",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/InStock",
+              "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+            },
+            "areaServed": ["Antibes", "Juan-les-Pins", "France"]
           },
           {
             "@type": "FAQPage",
@@ -231,8 +267,12 @@
           </div>
         </div>
         <div class="image-frame">
-          <img src="./images/sonia-portrait.webp" alt="Sonia Maïolino, thérapeute holistique fondatrice de Voix Sana"
-            loading="eager" fetchpriority="high" width="600" height="800">
+          <img src="./images/sonia-portrait-420w.webp"
+            srcset="./images/sonia-portrait-420w.webp 420w,
+                    ./images/sonia-portrait-840w.webp 840w"
+            sizes="(min-width: 468px) 420px, calc(100vw - 3rem)"
+            alt="Sonia Maïolino, thérapeute holistique fondatrice de Voix Sana"
+            loading="eager" fetchpriority="high" width="420" height="560">
         </div>
       </div>
     </section>
