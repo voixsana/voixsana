@@ -602,15 +602,7 @@ strong { font-weight: 500; }
 }
 
 .testimonial blockquote::before {
-  content: "\201C";
-  position: absolute;
-  top: 0.4rem;
-  left: var(--space-md);
-  font-family: var(--font-serif);
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--color-terre-claire);
-  opacity: 0.6;
+  display: none;
 }
 
 .testimonial cite {
@@ -624,6 +616,7 @@ strong { font-weight: 500; }
 
 .testimonial details {
   padding: var(--space-xs) var(--space-md) var(--space-md);
+  margin-top: auto;
 }
 
 .testimonial details summary {
