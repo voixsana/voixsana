@@ -580,8 +580,15 @@ strong { font-weight: 500; }
 .testimonial video {
   width: 100%;
   aspect-ratio: 9 / 16;
+  max-height: 65vw;
   object-fit: cover;
   background-color: var(--color-prune-profond);
+}
+
+@media (min-width: 960px) {
+  .testimonial video {
+    max-height: none;
+  }
 }
 
 .testimonial blockquote {
