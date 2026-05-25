@@ -794,7 +794,7 @@ strong { font-weight: 500; }
   aspect-ratio: 4 / 5;
 }
 
-/* Sonia : image à gauche sur desktop */
+/* Sonia : colonnes qui s'alignent sur la hauteur du texte */
 .section-sonia .split-layout {
   grid-template-columns: 1fr;
 }
@@ -802,12 +802,71 @@ strong { font-weight: 500; }
 @media (min-width: 768px) {
   .section-sonia .split-layout {
     grid-template-columns: 2fr 3fr;
+    align-items: stretch;
   }
 }
 
-.section-sonia .image-frame {
-  aspect-ratio: 3 / 4;
-  max-height: 480px;
+/* Colonne images : flex vertical qui remplit la hauteur de la grille */
+.sonia-images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Mobile : ratios fixes */
+.sonia-images .image-frame:first-child {
+  aspect-ratio: 6 / 5;
+}
+
+.sonia-images .image-frame:first-child img {
+  object-position: top center;
+}
+
+/* Desktop : les images s'étirent pour remplir exactement la hauteur du texte */
+@media (min-width: 768px) {
+  .sonia-images {
+    height: 100%;
+  }
+
+  .sonia-images .image-frame:first-child {
+    flex: 3;
+    aspect-ratio: unset;
+    min-height: 0;
+  }
+
+  .sonia-seance-card {
+    flex: 2;
+    min-height: 0;
+  }
+
+  .sonia-seance-card .image-wrap {
+    aspect-ratio: unset;
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+.sonia-seance-card {
+  overflow: visible;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sonia-seance-card .image-wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+}
+
+.sonia-seance-card figcaption {
+  padding: var(--space-xs) var(--space-sm) 0;
+  color: var(--color-prune-leger);
+  font-family: var(--font-serif);
+  font-size: var(--fs-small);
+  font-style: italic;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
 }
 
 /* --- Grilles de cartes --- */
