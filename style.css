@@ -849,6 +849,11 @@ strong { font-weight: 500; }
   letter-spacing: -0.01em;
 }
 
+/* Sur fond terre-claire, terre-saturée est presque illisible : on bascule vers prune */
+.surface-terre .price { color: var(--color-prune-profond); }
+.surface-terre .info-list { color: var(--color-prune-profond); }
+.surface-terre .info-list li::before { background-color: var(--color-prune-profond); }
+
 .info-list {
   list-style: none;
   padding: 0;
