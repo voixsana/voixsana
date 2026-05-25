@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
 
 <head>
@@ -598,21 +598,21 @@
 
       <script>
         const questions = [
-          { t: "Te sens-tu souvent rabaissée, critiquée ou dévalorisée par ton/ta partenaire ?", inv: false },
-          { t: "As-tu régulièrement peur de sa réaction (colère, bouderie, silence, reproches) ?", inv: false },
-          { t: "As-tu l'impression de marcher sur des œufs pour éviter un conflit ?", inv: false },
-          { t: "Ton/ta partenaire minimise-t-il tes émotions, tes besoins ou tes souffrances ?", inv: false },
-          { t: "Te sens-tu coupable dès qu'il/elle est de mauvaise humeur, triste ou fâché(e) ?", inv: false },
-          { t: "Ton/ta partenaire te reproche-t-il régulièrement tes amitiés, ta famille ou tes activités ?", inv: false },
-          { t: "As-tu l'impression de devoir te justifier ou rendre des comptes en permanence ?", inv: false },
-          { t: "As-tu perdu confiance en toi depuis que tu es dans cette relation ?", inv: false },
-          { t: "As-tu le sentiment de donner beaucoup plus que ce que tu reçois ?", inv: false },
-          { t: "Ton/ta partenaire respecte-t-il/elle tes limites personnelles et physiques ?", inv: true },
-          { t: "Te sens-tu libre d'être toi-même dans cette relation (pensées, émotions, opinions) ?", inv: true },
-          { t: "Ton/ta partenaire utilise-t-il la jalousie, le chantage affectif ou la menace pour obtenir quelque chose ?", inv: false },
-          { t: "As-tu souvent l'impression que tout est « de ta faute » ?", inv: false },
-          { t: "As-tu le sentiment que ton énergie, ta joie ou ta vitalité diminuent dans cette relation ?", inv: false },
-          { t: "As-tu peur de partir, non par amour, mais par crainte de sa réaction, du jugement ou de la solitude ?", inv: false }
+          { t: "Te sens-tu souvent rabaissée, critiquée ou dévalorisée par ton/ta partenaire&nbsp;?", inv: false },
+          { t: "As-tu régulièrement peur de sa réaction (colère, bouderie, silence, reproches)&nbsp;?", inv: false },
+          { t: "As-tu l'impression de marcher sur des œufs pour éviter un conflit&nbsp;?", inv: false },
+          { t: "Ton/ta partenaire minimise-t-il tes émotions, tes besoins ou tes souffrances&nbsp;?", inv: false },
+          { t: "Te sens-tu coupable dès qu'il/elle est de mauvaise humeur, triste ou fâché(e)&nbsp;?", inv: false },
+          { t: "Ton/ta partenaire te reproche-t-il régulièrement tes amitiés, ta famille ou tes activités&nbsp;?", inv: false },
+          { t: "As-tu l'impression de devoir te justifier ou rendre des comptes en permanence&nbsp;?", inv: false },
+          { t: "As-tu perdu confiance en toi depuis que tu es dans cette relation&nbsp;?", inv: false },
+          { t: "As-tu le sentiment de donner beaucoup plus que ce que tu reçois&nbsp;?", inv: false },
+          { t: "Ton/ta partenaire respecte-t-il/elle tes limites personnelles et physiques&nbsp;?", inv: true },
+          { t: "Te sens-tu libre d'être toi-même dans cette relation (pensées, émotions, opinions)&nbsp;?", inv: true },
+          { t: "Ton/ta partenaire utilise-t-il la jalousie, le chantage affectif ou la menace pour obtenir quelque chose&nbsp;?", inv: false },
+          { t: "As-tu souvent l'impression que tout est « de ta faute »&nbsp;?", inv: false },
+          { t: "As-tu le sentiment que ton énergie, ta joie ou ta vitalité diminuent dans cette relation&nbsp;?", inv: false },
+          { t: "As-tu peur de partir, non par amour, mais par crainte de sa réaction, du jugement ou de la solitude&nbsp;?", inv: false }
         ];
 
         const OPTIONS = [
@@ -686,8 +686,8 @@
           let level, text, ctaHtml;
 
           if (score <= 12) {
-            level = "Quelques signaux à observer";
-            text = "Ton score suggère quelques tensions dans ta relation, mais sans signes marqués de toxicité. Garde confiance en ton ressenti — si quelque chose te pèse, tu mérites d'en parler.";
+            level = "Ta relation semble équilibrée";
+            text = "Ton score ne révèle pas de signes particuliers de toxicité. Reste à l'écoute de toi-même — si quelque chose te questionne dans ta relation, tu mérites un espace pour en parler.";
             ctaHtml = `<a class="qs-cta-primary" href="#tarifs">Voir les séances proposées</a>` +
               `<a class="qs-cta-secondary" href="${medoucineUrl}" target="_blank" rel="noopener">Réserver un appel découverte gratuit</a>`;
           } else if (score <= 27) {
