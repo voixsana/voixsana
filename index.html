@@ -29,10 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/tokens.css">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/components.css">
-    <link rel="stylesheet" href="./css/sections.css">
+    <link rel="stylesheet" href="./style.css">
 
     <script type="application/ld+json">
       {
@@ -179,22 +176,24 @@
           <a href="#contact">Contact</a>
         </nav>
 
-        <!-- TODO: remplacer MEDOUCINE_URL_APPEL_DECOUVERTE par le vrai lien Medoucine -->
-        <a class="btn btn-primary" href="MEDOUCINE_URL_APPEL_DECOUVERTE" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
+        <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
       </div>
 
       <div class="mobile-drawer" data-mobile-drawer>
         <button class="mobile-overlay" aria-label="Fermer le menu" data-close-drawer></button>
-        <nav class="mobile-panel" aria-label="Navigation mobile">
-          <a href="#accompagnement" data-close-drawer>Accompagnement</a>
-          <a href="#voix-sana" data-close-drawer>La pratique</a>
-          <a href="#sonia" data-close-drawer>Sonia</a>
-          <a href="#tarifs" data-close-drawer>Tarifs</a>
-          <a href="#temoignages" data-close-drawer>Témoignages</a>
-          <a href="#faq" data-close-drawer>FAQ</a>
-          <a href="#questionnaire" data-close-drawer>Définir ma relation</a>
-          <a href="#contact" data-close-drawer>Contact</a>
-        </nav>
+        <div class="mobile-panel">
+          <nav aria-label="Navigation mobile">
+            <a href="#accompagnement" data-close-drawer>Accompagnement</a>
+            <a href="#voix-sana" data-close-drawer>La pratique</a>
+            <a href="#sonia" data-close-drawer>Sonia</a>
+            <a href="#tarifs" data-close-drawer>Tarifs</a>
+            <a href="#temoignages" data-close-drawer>Témoignages</a>
+            <a href="#faq" data-close-drawer>FAQ</a>
+            <a href="#questionnaire" data-close-drawer>Définir ma relation</a>
+            <a href="#contact" data-close-drawer>Contact</a>
+          </nav>
+          <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer" data-close-drawer>Prendre RDV</a>
+        </div>
       </div>
     </header>
 
@@ -250,7 +249,9 @@
             <p>La pratique se déroule en séances individuelles ou en petit groupe (3 à 4 femmes), à Antibes ou en visio. Chaque séance est un espace sécurisé où tu peux explorer ta voix sans jugement.</p>
           </div>
           <div class="image-frame">
-            <img src="./images/cabinet-antibes.webp" alt="Cabinet d'accompagnement Voix Sana à Antibes" loading="lazy" width="900" height="650">
+            <video controls preload="metadata" poster="./images/presentation-poster.webp">
+              <source src="./videos/presentation_voixsana_web.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </section>
@@ -285,8 +286,7 @@
                 <li>Lieu : Antibes ou visio (Zoom)</li>
               </ul>
               <p class="price">80 €</p>
-              <!-- TODO: remplacer MEDOUCINE_URL_RDV_INDIVIDUEL par le vrai lien Medoucine -->
-              <a class="btn btn-primary" href="MEDOUCINE_URL_RDV_INDIVIDUEL" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
+              <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
             </article>
 
             <article class="card surface-creme-clair">
@@ -297,16 +297,14 @@
                 <li>Lieu : Antibes ou visio (Zoom)</li>
               </ul>
               <p class="price">70 €</p>
-              <!-- TODO: remplacer MEDOUCINE_URL_RDV_COLLECTIF par le vrai lien Medoucine -->
-              <a class="btn btn-primary" href="MEDOUCINE_URL_RDV_COLLECTIF" target="_blank" rel="noopener noreferrer">Réserver ma place</a>
+              <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Réserver ma place</a>
             </article>
           </div>
 
           <article class="card surface-sauge">
             <h3>Tu n'es pas sûre que c'est pour toi ?</h3>
             <p>Réserve un appel découverte gratuit de 30 minutes. On échange sur ta situation, ce que tu cherches, et je te dis honnêtement si Voix Sana peut t'apporter ce dont tu as besoin.</p>
-              <!-- TODO: remplacer MEDOUCINE_URL_APPEL_DECOUVERTE par le vrai lien Medoucine -->
-              <a class="btn btn-secondary" href="MEDOUCINE_URL_APPEL_DECOUVERTE" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
+              <a class="btn btn-secondary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Réserver un appel découverte</a>
           </article>
         </div>
       </section>
@@ -439,25 +437,13 @@
             <article class="card surface-sable">
               <h3>Réserver un appel découverte</h3>
               <p>30 minutes gratuites pour faire connaissance et voir si Voix Sana est juste pour toi.</p>
-              <!-- TODO: remplacer MEDOUCINE_URL_APPEL_DECOUVERTE par le vrai lien Medoucine -->
-              <a class="btn btn-primary" href="MEDOUCINE_URL_APPEL_DECOUVERTE" target="_blank" rel="noopener noreferrer">Réserver sur Medoucine</a>
+              <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286" target="_blank" rel="noopener noreferrer">Réserver sur Medoucine</a>
             </article>
 
             <article class="card surface-creme-clair">
               <h3>M'écrire un message</h3>
               <p>Pour toute question, partage, ou demande d'information.</p>
-              <div class="embed-shell">
-                <!-- TODO: remplacer TALLY_CONTACT_ID par le vrai ID du formulaire Tally -->
-                <iframe
-                  src="https://tally.so/embed/TALLY_CONTACT_ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-                  loading="lazy"
-                  width="100%"
-                  height="340"
-                  frameborder="0"
-                  marginheight="0"
-                  marginwidth="0"
-                  title="Formulaire de contact Voix Sana"></iframe>
-              </div>
+              <a class="btn btn-primary" href="mailto:voix.sana@gmail.com">Envoyer un e-mail</a>
             </article>
           </div>
 
@@ -484,9 +470,73 @@
       </div>
     </footer>
 
-<script src="./js/nav.js" defer></script>
-    <script src="./js/faq.js" defer></script>
-    <script src="./js/testimonials.js" defer></script>
+<script>
+  (function () {
+    'use strict';
+
+    /* Navigation mobile */
+    const burger = document.querySelector('[data-menu-toggle]');
+    const drawer = document.querySelector('[data-mobile-drawer]');
+
+    if (burger && drawer) {
+      function openDrawer() {
+        drawer.classList.add('is-open');
+        burger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        burger.focus();
+      }
+
+      burger.addEventListener('click', openDrawer);
+
+      drawer.querySelectorAll('[data-close-drawer]').forEach(function (el) {
+        el.addEventListener('click', closeDrawer);
+      });
+
+      drawer.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeDrawer();
+      });
+    }
+
+    /* Retour en haut de page au clic sur le logo */
+    const brand = document.querySelector('.brand');
+    if (brand) {
+      brand.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, '', window.location.pathname);
+      });
+    }
+
+    /* Smooth scroll pour ancres internes */
+    document.querySelectorAll('a[href^="#"]:not(.brand)').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        const id = this.getAttribute('href').slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', '#' + id);
+      });
+    });
+
+    /* Une seule vidéo de témoignage à la fois */
+    const inlineVideos = document.querySelectorAll('.testimonial video');
+    inlineVideos.forEach(function (video) {
+      video.addEventListener('play', function () {
+        inlineVideos.forEach(function (other) {
+          if (other !== video && !other.paused) other.pause();
+        });
+      });
+    });
+  })();
+</script>
     <script async src="https://tally.so/widgets/embed.js"></script>
   </body>
 </html>
