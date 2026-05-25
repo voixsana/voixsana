@@ -29,8 +29,18 @@
     if (e.key === 'Escape') closeDrawer();
   });
 
+  /* Retour en haut de page au clic sur le logo */
+  const brand = document.querySelector('.brand');
+  if (brand) {
+    brand.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.pushState(null, '', window.location.pathname);
+    });
+  }
+
   /* Smooth scroll pour ancres internes */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  document.querySelectorAll('a[href^="#"]:not(.brand)').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       const id = this.getAttribute('href').slice(1);
       if (!id) return;

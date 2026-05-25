@@ -200,9 +200,9 @@
   gap: var(--space-md);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 960px) {
   .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

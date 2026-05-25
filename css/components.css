@@ -293,7 +293,7 @@
 
 .testimonial video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
   background-color: var(--color-prune-profond);
 }
@@ -343,34 +343,3 @@
   margin-top: var(--space-xs);
 }
 
-.testimonial .btn { margin: 0 var(--space-md) var(--space-sm); }
-
-/* === VIDEO LIGHTBOX === */
-.video-lightbox {
-  border: none;
-  padding: 0;
-  background: transparent;
-  max-width: 90vw;
-  width: 800px;
-}
-
-.video-lightbox::backdrop {
-  background-color: rgba(74, 47, 56, 0.85);
-}
-
-.video-frame {
-  background-color: var(--color-prune-profond);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  padding: var(--space-md);
-}
-
-.video-frame video {
-  width: 100%;
-  border-radius: var(--border-radius);
-}
-
-.stack-actions {
-  display: flex;
-  justify-content: center;
-}
