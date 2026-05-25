@@ -787,6 +787,29 @@ strong { font-weight: 500; }
   aspect-ratio: 4 / 5;
 }
 
+.video-transcript {
+  margin-top: var(--space-sm);
+}
+
+.video-transcript summary {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-terre-saturee);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transition);
+}
+
+.video-transcript summary::-webkit-details-marker { display: none; }
+.video-transcript summary:hover { color: var(--color-prune-profond); }
+
+.video-transcript p {
+  font-size: var(--fs-small);
+  color: var(--color-prune-leger);
+  line-height: 1.7;
+  margin-top: var(--space-sm);
+}
+
 /* Sonia : colonnes qui s'alignent sur la hauteur du texte */
 .section-sonia .split-layout {
   grid-template-columns: 1fr;
