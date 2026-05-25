@@ -1342,6 +1342,50 @@ strong { font-weight: 500; }
 
 .footer a:hover { color: var(--color-creme); }
 
+.footer-urgence {
+  padding-block: var(--space-md);
+  border-bottom: 1px solid rgba(251, 247, 241, 0.12);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.footer-urgence-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(251, 247, 241, 0.45);
+  margin-bottom: 0.6rem;
+}
+
+.footer-urgence-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2.5rem;
+}
+
+.footer-urgence-number {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-creme);
+  transition: color var(--transition);
+}
+
+.footer-urgence-number:hover { color: var(--color-terre-claire); }
+
+.footer-urgence-number strong {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.footer-urgence-label {
+  font-size: var(--fs-small);
+  color: rgba(251, 247, 241, 0.65);
+}
+
 /* --- Page erreur 404 --- */
 
 .error-page {
