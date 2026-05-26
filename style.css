@@ -710,6 +710,12 @@ strong { font-weight: 500; }
   font-size: clamp(2.5rem, 5.5vw + 1rem, 4.25rem);
 }
 
+@media (min-width: 768px) {
+  .hero-layout h1 {
+    font-size: clamp(2.25rem, 3vw + 0.75rem, 3.25rem);
+  }
+}
+
 .hero-layout h1 em {
   font-style: italic;
   display: block;
