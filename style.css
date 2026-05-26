@@ -1403,7 +1403,7 @@ strong { font-weight: 500; }
 
 .error-page p { color: var(--color-prune-leger); margin-bottom: var(--space-md); }
 
-/* --- Éditorial (mon-histoire, mentions-légales) --- */
+/* --- Éditorial (mentions-légales) --- */
 
 .editorial {
   max-width: var(--max-width-content);
@@ -1425,17 +1425,6 @@ strong { font-weight: 500; }
 .editorial p {
   line-height: 1.8;
   margin-bottom: var(--space-md);
-}
-
-.editorial blockquote {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-style: italic;
-  color: var(--color-mauve-doux);
-  border-left: 3px solid var(--color-terre-claire);
-  padding-left: var(--space-md);
-  margin-block: var(--space-lg);
-  line-height: 1.6;
 }
 
 .editorial section { margin-top: var(--space-xl); }

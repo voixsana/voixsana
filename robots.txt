@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /mon-histoire.html
 
 Sitemap: https://voixsana.fr/sitemap.xml
