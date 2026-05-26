@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /mon-histoire.html
 
-Sitemap: https://voixsana.github.io/voixsana/sitemap.xml
+Sitemap: https://voixsana.fr/sitemap.xml
