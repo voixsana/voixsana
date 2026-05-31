@@ -585,6 +585,10 @@ strong { font-weight: 500; }
   background-color: var(--color-prune-profond);
 }
 
+.testimonial video:-webkit-full-screen { object-fit: contain; }
+.testimonial video:-moz-full-screen    { object-fit: contain; }
+.testimonial video:fullscreen          { object-fit: contain; }
+
 @media (min-width: 960px) {
   .testimonial video {
     max-height: none;
