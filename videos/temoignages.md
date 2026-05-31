@@ -42,6 +42,7 @@ Bonjour, je suis Stéphanie et je voudrais vous parler de ma séance de Voix San
 
 **Cite :** Stéphanie M., après une séance Voix Sana
 
-**Citation courte :** *(à renseigner)*
+**Citation courte :** "J'ai l'impression d'avoir récupéré une part de moi et de me sentir aujourd'hui plus pleine et plus entière moi-même."
 
-**Transcription :** *(à faire — voir procédure dans CLAUDE.md)*
+**Transcription :**
+J'ai vécu une expérience de Voix Sana avec Sonia. Je ne savais pas du tout en quoi consistait cette séance et Sonia a une présence, une bienveillance et une justesse très accompagnante qui m'a mise vraiment en confiance. Ça m'a permis de lâcher prise et de me laisser guider, à explorer à l'intérieur de moi, à travers ma voix et mon souffle, différents niveaux de présence dans mon corps et d'aller rencontrer un endroit qui était inconfortable, une zone de blocage. Et grâce à l'accompagnement de Sonia, j'ai pu dépasser ce blocage, ouvrir cet espace, ouvrir cette porte et ça a été une immense libération. J'ai l'impression d'avoir récupéré une part de moi et de me sentir aujourd'hui plus pleine et plus entière moi-même. Je remercie vraiment Sonia parce que son accompagnement est d'une qualité magnifique et c'est vraiment une magicienne de l'âme et de l'être. Merci vraiment Sonia pour cet accompagnement, qui me donne vraiment envie d'aller plus loin dans cette expérimentation.
