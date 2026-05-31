@@ -589,7 +589,7 @@ strong { font-weight: 500; }
 .testimonial video:-moz-full-screen    { object-fit: contain; }
 .testimonial video:fullscreen          { object-fit: contain; }
 
-@media (min-width: 960px) {
+@media (min-width: 900px) {
   .testimonial video {
     max-height: none;
   }
@@ -995,7 +995,7 @@ strong { font-weight: 500; }
   gap: var(--space-md);
 }
 
-@media (min-width: 960px) {
+@media (min-width: 900px) {
   .testimonials-grid {
     grid-template-columns: repeat(3, 1fr);
   }
