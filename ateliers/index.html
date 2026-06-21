@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="fr">
+
+<!--
+  MISE À JOUR SAISONNIÈRE
+  1. Changer la classe de saison sur <main class="ateliers ateliers--ete"> (--ete / --automne / --hiver / --printemps).
+     Cela bascule à la fois l'image de fond du hero et la couleur d'accent de toute la page.
+  2. Déposer la nouvelle image de fond dans /images/atelier-<saison>.webp et l'og-image /images/og-ateliers-<saison>.webp.
+  3. Remplacer le bloc "saison en cours" (hero + programme + dates + JSON-LD Event) par la nouvelle saison.
+  4. Déplacer la saison précédente dans la section "Éditions précédentes" (résumé compact).
+  5. Mettre à jour <title>, meta description, og:* et le bandeau teaser de index.html.
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ateliers Voix Sana — Faire taire le mental : 5 Escales bien-être à Juan-les-Pins · Été 2026</title>
+  <meta name="description"
+    content="Cinq journées Voix Sana indépendantes pour apaiser le mental à Juan-les-Pins. Pique-nique inclus, 80 € par jour, du 1ᵉʳ août au 26 septembre 2026. Réservation libre.">
+  <meta name="author" content="Sonia Maïolino">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://voixsana.fr/ateliers/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://voixsana.fr/ateliers/">
+  <meta property="og:title" content="Ateliers Voix Sana — Faire taire le mental · 5 Escales à Juan-les-Pins">
+  <meta property="og:description"
+    content="Un cycle de 5 journées bien-être par la voix pour apaiser le mental. Chaque Escale est indépendante, pique-nique inclus. Juan-les-Pins, été 2026.">
+  <!-- TODO/CONFIRM : remplacer par /images/og-ateliers-ete.webp (1200×630) une fois l'image déposée ; fallback actuel = og-image.webp -->
+  <meta property="og:image" content="https://voixsana.fr/images/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Voix Sana">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ateliers Voix Sana — Faire taire le mental">
+  <meta name="twitter:description"
+    content="5 journées bien-être par la voix pour apaiser le mental. Repas inclus, 80 €/jour. Juan-les-Pins, été 2026.">
+  <!-- TODO/CONFIRM : voir og:image ci-dessus -->
+  <meta name="twitter:image" content="https://voixsana.fr/images/og-image.webp">
+
+  <meta name="theme-color" content="#FBF7F1">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://voixsana.fr/" },
+            { "@type": "ListItem", "position": 2, "name": "Ateliers", "item": "https://voixsana.fr/ateliers/" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Dois-je participer aux 5 Escales ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. Chaque Escale est une journée complète et indépendante. Vous pouvez en choisir une seule ou suivre le cycle entier. Les Escales forment une progression, mais chacune se vit pleinement seule."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Faut-il savoir chanter ou avoir déjà pratiqué Voix Sana ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. Aucun talent vocal ni expérience préalable n'est requis. Il ne s'agit pas de chanter, mais de retrouver le son juste."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment se déroule la journée ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "De 9h30 à 17h00 : un atelier le matin, un pique-nique partagé sur place, puis une séance collective de Voix Sana l'après-midi."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Le repas est-il compris ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui. Il s'agit d'un pique-nique simple, préparé maison par Sonia (taboulé, fruits…) et partagé sur place, inclus dans le tarif de 80 €. Ce n'est pas un repas de traiteur, mais un moment de convivialité."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Où ont lieu les Ateliers ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "À Juan-les-Pins. L'adresse précise vous est communiquée à l'inscription."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment réserver ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "En réservant la date de l'Escale souhaitée sur Medoucine."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Escale 1 — L'Éveil du corps · Atelier Voix Sana",
+        "startDate": "2026-08-01T09:30:00+02:00",
+        "endDate": "2026-08-01T17:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Juan-les-Pins", "address": { "@type": "PostalAddress", "addressLocality": "Juan-les-Pins", "postalCode": "06160", "addressCountry": "FR" } },
+        "image": ["https://voixsana.fr/images/og-image.webp"],
+        "description": "Journée Voix Sana (9h30–17h00) pour apaiser le mental : atelier le matin, pique-nique fait maison inclus, séance collective de Voix Sana l'après-midi. Juan-les-Pins.",
+        "organizer": { "@type": "Person", "name": "Sonia Maïolino", "url": "https://voixsana.fr/" },
+        "performer": { "@type": "Person", "name": "Sonia Maïolino" },
+        "offers": { "@type": "Offer", "price": "80", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286", "validFrom": "2026-06-21" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Escale 2 — Le Souffle libérateur · Atelier Voix Sana",
+        "startDate": "2026-08-15T09:30:00+02:00",
+        "endDate": "2026-08-15T17:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Juan-les-Pins", "address": { "@type": "PostalAddress", "addressLocality": "Juan-les-Pins", "postalCode": "06160", "addressCountry": "FR" } },
+        "image": ["https://voixsana.fr/images/og-image.webp"],
+        "description": "Journée Voix Sana (9h30–17h00) pour apaiser le mental : atelier le matin, pique-nique fait maison inclus, séance collective de Voix Sana l'après-midi. Juan-les-Pins.",
+        "organizer": { "@type": "Person", "name": "Sonia Maïolino", "url": "https://voixsana.fr/" },
+        "performer": { "@type": "Person", "name": "Sonia Maïolino" },
+        "offers": { "@type": "Offer", "price": "80", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286", "validFrom": "2026-06-21" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Escale 3 — L'Instant présent · Atelier Voix Sana",
+        "startDate": "2026-08-29T09:30:00+02:00",
+        "endDate": "2026-08-29T17:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Juan-les-Pins", "address": { "@type": "PostalAddress", "addressLocality": "Juan-les-Pins", "postalCode": "06160", "addressCountry": "FR" } },
+        "image": ["https://voixsana.fr/images/og-image.webp"],
+        "description": "Journée Voix Sana (9h30–17h00) pour apaiser le mental : atelier le matin, pique-nique fait maison inclus, séance collective de Voix Sana l'après-midi. Juan-les-Pins.",
+        "organizer": { "@type": "Person", "name": "Sonia Maïolino", "url": "https://voixsana.fr/" },
+        "performer": { "@type": "Person", "name": "Sonia Maïolino" },
+        "offers": { "@type": "Offer", "price": "80", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286", "validFrom": "2026-06-21" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Escale 4 — L'Accueil bienveillant · Atelier Voix Sana",
+        "startDate": "2026-09-12T09:30:00+02:00",
+        "endDate": "2026-09-12T17:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Juan-les-Pins", "address": { "@type": "PostalAddress", "addressLocality": "Juan-les-Pins", "postalCode": "06160", "addressCountry": "FR" } },
+        "image": ["https://voixsana.fr/images/og-image.webp"],
+        "description": "Journée Voix Sana (9h30–17h00) pour apaiser le mental : atelier le matin, pique-nique fait maison inclus, séance collective de Voix Sana l'après-midi. Juan-les-Pins.",
+        "organizer": { "@type": "Person", "name": "Sonia Maïolino", "url": "https://voixsana.fr/" },
+        "performer": { "@type": "Person", "name": "Sonia Maïolino" },
+        "offers": { "@type": "Offer", "price": "80", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286", "validFrom": "2026-06-21" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Escale 5 — Le Silence de l'Être · Atelier Voix Sana",
+        "startDate": "2026-09-26T09:30:00+02:00",
+        "endDate": "2026-09-26T17:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@type": "Place", "name": "Juan-les-Pins", "address": { "@type": "PostalAddress", "addressLocality": "Juan-les-Pins", "postalCode": "06160", "addressCountry": "FR" } },
+        "image": ["https://voixsana.fr/images/og-image.webp"],
+        "description": "Journée Voix Sana (9h30–17h00) pour apaiser le mental : atelier le matin, pique-nique fait maison inclus, séance collective de Voix Sana l'après-midi. Juan-les-Pins.",
+        "organizer": { "@type": "Person", "name": "Sonia Maïolino", "url": "https://voixsana.fr/" },
+        "performer": { "@type": "Person", "name": "Sonia Maïolino" },
+        "offers": { "@type": "Offer", "price": "80", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286", "validFrom": "2026-06-21" }
+      }
+    ]
+  </script>
+
+  <script data-goatcounter="https://voixsana.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../" aria-label="Retour à l'accueil Voix Sana">
+        <strong>Voix Sana</strong>
+      </a>
+      <div class="nav-actions">
+        <a class="btn btn-secondary btn-compact" href="../">Retour à l'accueil</a>
+        <a class="btn btn-primary btn-compact" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+          target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-header-rdv">Prendre RDV</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="ateliers ateliers--ete">
+    <!-- ============================================================
+         SAISON EN COURS — ÉTÉ 2026
+         ============================================================ -->
+    <section class="section ateliers-hero">
+      <div class="container">
+        <nav class="ateliers-breadcrumb" aria-label="Fil d'Ariane">
+          <a href="../">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Ateliers</span>
+        </nav>
+
+        <div class="ateliers-hero__inner">
+          <p class="hero-eyebrow">Cycle saisonnier · Été 2026</p>
+          <h1>Ateliers de l'été — Faire taire le mental</h1>
+          <p class="ateliers-lead">5 Escales au cœur de soi</p>
+
+          <div class="ateliers-intro">
+            <p>Notre esprit est souvent comme un lac agité par le vent : le flot continu de nos pensées crée des vagues
+              qui nous empêchent de voir le fond, là où réside notre Nature profonde.</p>
+            <p>Je vous invite à découvrir un cycle de 5 ateliers Voix Sana — thérapie de libération par la voix —
+              pensés comme des bulles de douceur et de sécurité. Chaque Escale est indépendante : venez cueillir celle
+              dont vous avez besoin, lorsque votre esprit s'embrume.</p>
+          </div>
+
+          <ul class="ateliers-facts">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Juan-les-Pins</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>5 samedis · 1ᵉʳ août → 26 septembre 2026</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>9h30–17h00</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              <span>80 € / personne / jour</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              <span>Pique-nique inclus</span>
+            </li>
+          </ul>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-hero-reserver">Réserver une Escale</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le déroulé d'une journée -->
+    <section class="section section-accompagnement" id="deroule">
+      <div class="container section-inner">
+        <div class="content-narrow">
+          <h2>Le déroulé d'une journée</h2>
+          <p>Une Escale s'étale sur une journée, de 9h30 à 17h00 : un atelier le matin, un pique-nique partagé sur
+            place, puis une séance collective de Voix Sana l'après-midi. Le pique-nique, simple et fait maison par
+            Sonia (taboulé, fruits…), est inclus dans le tarif.</p>
+          <p>Chaque Escale est une journée complète et indépendante : vous pouvez en vivre une seule, ou suivre le cycle
+            entier. Les cinq Escales forment une progression douce, de l'ancrage du corps jusqu'au silence intérieur —
+            mais chacune se suffit à elle-même.</p>
+        </div>
+
+        <div class="grid-cards">
+          <article class="card surface-sauge">
+            <h3>Le matin · l'atelier</h3>
+            <p>Un temps d'exploration douce pour quitter le mental et revenir au corps, au souffle, au ressenti.</p>
+          </article>
+          <article class="card surface-sable">
+            <h3>Le midi · le pique-nique</h3>
+            <p>Un pique-nique simple, préparé maison par Sonia (taboulé, fruits…) et partagé sur place. Inclus dans le
+              tarif, sans rien à prévoir — ce n'est pas un repas de traiteur, mais un moment de convivialité.</p>
+          </article>
+          <article class="card surface-terre">
+            <h3>L'après-midi · Voix Sana</h3>
+            <p>Une séance collective de Voix Sana, pour libérer par la voix ce qui s'est figé et retrouver le silence intérieur.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le programme -->
+    <section class="section section-temoignages" id="programme">
+      <div class="container section-inner">
+        <div class="content-narrow">
+          <h2>Le programme — 5 Escales</h2>
+          <p>Chaque Escale se réserve indépendamment. Les cinq forment une progression, de l'ancrage du corps jusqu'au
+            silence de l'être — mais chacune se vit pleinement seule.</p>
+        </div>
+
+        <!-- TODO/CONFIRM : si des URL Medoucine par date existent, les renseigner par carte ; sinon, lien générique de consultation -->
+        <div class="ateliers-programme">
+          <article class="ateliers-escale">
+            <span class="ateliers-escale__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+            </span>
+            <p class="ateliers-escale__date">samedi 1ᵉʳ août</p>
+            <h3>Escale 1 — L'Éveil du corps</h3>
+            <p class="ateliers-escale__desc">Quitter la tête par l'ancrage et les sens</p>
+            <a class="btn btn-secondary btn-compact" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-escale-1">Réserver cette journée</a>
+          </article>
+
+          <article class="ateliers-escale">
+            <span class="ateliers-escale__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2"/><path d="M12.59 11.41A2 2 0 1 0 14 15H2"/><path d="M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+            </span>
+            <p class="ateliers-escale__date">samedi 15 août</p>
+            <h3>Escale 2 — Le Souffle libérateur</h3>
+            <p class="ateliers-escale__desc">Ralentir le rythme par la respiration</p>
+            <a class="btn btn-secondary btn-compact" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-escale-2">Réserver cette journée</a>
+          </article>
+
+          <article class="ateliers-escale">
+            <span class="ateliers-escale__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </span>
+            <p class="ateliers-escale__date">samedi 29 août</p>
+            <h3>Escale 3 — L'Instant présent</h3>
+            <p class="ateliers-escale__desc">Suspendre le temps</p>
+            <a class="btn btn-secondary btn-compact" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-escale-3">Réserver cette journée</a>
+          </article>
+
+          <article class="ateliers-escale">
+            <span class="ateliers-escale__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </span>
+            <p class="ateliers-escale__date">samedi 12 septembre</p>
+            <h3>Escale 4 — L'Accueil bienveillant</h3>
+            <p class="ateliers-escale__desc">Faire la paix avec ses pensées, sans lutter</p>
+            <a class="btn btn-secondary btn-compact" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-escale-4">Réserver cette journée</a>
+          </article>
+
+          <article class="ateliers-escale">
+            <span class="ateliers-escale__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <p class="ateliers-escale__date">samedi 26 septembre</p>
+            <h3>Escale 5 — Le Silence de l'Être</h3>
+            <p class="ateliers-escale__desc">Écouter l'espace sacré de son intuition</p>
+            <a class="btn btn-secondary btn-compact" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-escale-5">Réserver cette journée</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Informations pratiques -->
+    <section class="section section-tarifs" id="infos-pratiques">
+      <div class="container section-inner">
+        <div class="content-narrow">
+          <h2>Informations pratiques</h2>
+        </div>
+
+        <div class="ateliers-infos">
+          <ul class="info-list">
+            <!-- TODO/CONFIRM : nom + adresse exacts du lieu à Juan-les-Pins (par défaut : Le Jardin des Pins ; adresse précise communiquée à l'inscription) -->
+            <li><strong>Lieu</strong> : Juan-les-Pins — Le Jardin des Pins, 129 Boulevard Raymond Poincaré, 06160 Juan-les-Pins. L'adresse précise vous est communiquée à l'inscription.</li>
+            <li><strong>Horaires</strong> : 9h30 – 17h00.</li>
+            <li><strong>Tarif</strong> : 80 € par personne et par journée, pique-nique inclus.</li>
+            <li><strong>Pique-nique</strong> : simple et fait maison par Sonia (taboulé, fruits…), partagé sur place — ce n'est pas un repas de traiteur.</li>
+            <!-- TODO/CONFIRM : effectif (nombre de places) par atelier -->
+            <li><strong>Effectif</strong> : petit groupe.</li>
+            <li><strong>Modalité</strong> : chaque Escale se réserve indépendamment.</li>
+            <li><strong>Inscription</strong> : via Medoucine.</li>
+            <li><strong>Animé par</strong> : Sonia Maïolino, thérapeute holistique (Voix Sana).</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-infos-reserver">Réserver une Escale</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Questions fréquentes -->
+    <section class="section section-faq" id="faq">
+      <div class="container section-inner">
+        <div class="content-narrow">
+          <h2>Questions fréquentes</h2>
+        </div>
+
+        <!-- TODO/CONFIRM : FAQ en attente de validation par Sonia -->
+        <div data-faq-root>
+          <details>
+            <summary>Dois-je participer aux 5 Escales ?</summary>
+            <p>Non. Chaque Escale est une journée complète et indépendante. Vous pouvez en choisir une seule ou suivre le
+              cycle entier. Les Escales forment une progression, mais chacune se vit pleinement seule.</p>
+          </details>
+          <details>
+            <summary>Faut-il savoir chanter ou avoir déjà pratiqué Voix Sana ?</summary>
+            <p>Non. Aucun talent vocal ni expérience préalable n'est requis. Il ne s'agit pas de chanter, mais de
+              retrouver le son juste.</p>
+          </details>
+          <details>
+            <summary>Comment se déroule la journée ?</summary>
+            <p>De 9h30 à 17h00 : un atelier le matin, un pique-nique partagé sur place, puis une séance collective de Voix Sana
+              l'après-midi.</p>
+          </details>
+          <details>
+            <summary>Le repas est-il compris ?</summary>
+            <p>Oui. Il s'agit d'un pique-nique simple, préparé maison par Sonia (taboulé, fruits…) et partagé sur place,
+              inclus dans le tarif de 80 €. Ce n'est pas un repas de traiteur, mais un moment de convivialité.</p>
+          </details>
+          <details>
+            <summary>Où ont lieu les Ateliers ?</summary>
+            <p>À Juan-les-Pins. L'adresse précise vous est communiquée à l'inscription.</p>
+          </details>
+          <details>
+            <summary>Comment réserver ?</summary>
+            <p>En réservant la date de l'Escale souhaitée sur Medoucine.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-links -->
+    <section class="section section-contact" id="decouvrir">
+      <div class="container section-inner">
+        <div class="content-narrow">
+          <h2>Aller plus loin avec Voix Sana</h2>
+          <p>Les Ateliers prolongent la pratique Voix Sana en journées de groupe. Pour découvrir l'accompagnement
+            individuel ou réserver une séance :</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card surface-sable">
+            <h3>Découvrir Voix Sana</h3>
+            <p>La thérapie de libération par la voix, son approche et son déroulé.</p>
+            <a class="btn btn-secondary" href="../#voix-sana" data-goatcounter-click="cta-ateliers-decouvrir-pratique">Découvrir Voix Sana</a>
+          </article>
+
+          <article class="card surface-sauge">
+            <h3>Prendre rendez-vous</h3>
+            <p>Une séance individuelle ou un appel découverte gratuit, à ton rythme.</p>
+            <a class="btn btn-primary" href="https://www.medoucine.com/consultation/antibes/sonia-maiolino/23286"
+              target="_blank" rel="noopener noreferrer" data-goatcounter-click="cta-ateliers-prendre-rdv">Prendre rendez-vous</a>
+          </article>
+        </div>
+
+        <p class="ateliers-complementaire">
+          Envie d'une expérience collective différente ? Découvrez aussi mes
+          <a href="https://choeurs.voixsana.fr/" target="_blank" rel="noopener noreferrer"
+            data-goatcounter-click="cta-ateliers-choeurs">journées bien-être en groupe Chœurs →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Éditions précédentes -->
+    <section class="section section-sonia" id="archives">
+      <div class="container section-inner">
+        <div class="content-narrow">
+          <h2>Éditions précédentes</h2>
+          <p>L'été 2026 est la première édition des Ateliers Voix Sana. Les saisons passées seront archivées ici.</p>
+        </div>
+        <!-- ARCHIVE: when a new season launches, move the previous season's hero+programme here as a compact summary item. -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <p>© 2026 Voix Sana - Sonia Maïolino</p>
+      <p>
+        <a href="../mentions-legales.html#mentions">Mentions légales</a>
+        ·
+        <a href="../mentions-legales.html#rgpd">Politique de confidentialité</a>
+        ·
+        <a href="/ateliers/">Découvrir les Ateliers Voix Sana →</a>
+        ·
+        <a href="https://choeurs.voixsana.fr/" target="_blank" rel="noopener noreferrer">Voir mes
+          journées bien-être en groupe →</a>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
