@@ -1461,3 +1461,261 @@ strong { font-weight: 500; }
 .editorial section h2 { margin-top: 0; }
 
 .legal-layout { padding-block: var(--space-xl); }
+
+
+/* ==========================================================================
+   ATELIERS — Page saisonnière (/ateliers/) : hero, faits, programme, archives
+   ========================================================================== */
+
+/* --- Crochet saisonnier : la classe de saison sur <main class="ateliers ...">
+       bascule à la fois l'image de fond du hero et la couleur d'accent --- */
+.ateliers--ete       { --atelier-bg: url('/images/seance_groupe.webp');     --atelier-accent: var(--color-sauge-fonce); } /* TODO/CONFIRM : remplacer par /images/atelier-ete.webp une fois l'image saisonnière déposée */
+.ateliers--automne   { --atelier-bg: url('/images/atelier-automne.webp');   --atelier-accent: var(--color-terre-saturee); }
+.ateliers--hiver     { --atelier-bg: url('/images/atelier-hiver.webp');     --atelier-accent: var(--color-mauve-doux); }
+.ateliers--printemps { --atelier-bg: url('/images/atelier-printemps.webp'); --atelier-accent: var(--color-sauge-pale); }
+
+/* --- En-tête simplifié de la page (pas de menu de l'accueil) --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Sur très petits écrans, le logo ramène déjà à l'accueil : on masque le bouton retour */
+@media (max-width: 430px) {
+  .nav-actions .btn-secondary { display: none; }
+}
+
+/* --- Hero saisonnier --- */
+.ateliers-hero {
+  /* Fond crème de secours si l'image de saison n'existe pas encore : le scrim reste lisible */
+  background-color: var(--color-creme);
+  background-image:
+    linear-gradient(rgba(251, 247, 241, 0.80), rgba(251, 247, 241, 0.93)),
+    var(--atelier-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: var(--space-xl);
+}
+
+.ateliers-breadcrumb {
+  font-size: var(--fs-small);
+  color: var(--color-prune-leger);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.ateliers-breadcrumb a { color: var(--color-prune-leger); text-decoration: none; }
+.ateliers-breadcrumb a:hover { color: var(--color-terre-saturee); }
+.ateliers-breadcrumb span[aria-hidden] { color: rgba(74, 47, 56, 0.4); }
+.ateliers-breadcrumb span[aria-current] { color: var(--color-prune-profond); }
+
+.ateliers-hero__inner {
+  max-width: var(--max-width-content);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ateliers-hero__inner h1 {
+  margin-bottom: 0;
+  font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+}
+
+.ateliers-lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 1vw + 1.1rem, 1.75rem);
+  color: var(--color-terre-saturee);
+  margin-bottom: 0;
+}
+
+.ateliers-intro p {
+  font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.2rem);
+  color: var(--color-prune-leger);
+  line-height: 1.75;
+}
+
+/* --- Bandeau de faits clés (icônes inline subtiles) --- */
+.ateliers-facts {
+  list-style: none;
+  padding: var(--space-md) 0 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+}
+
+.ateliers-facts li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: 0;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-prune-profond);
+}
+
+.ateliers-facts svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--atelier-accent, var(--color-terre-saturee));
+}
+
+/* --- Programme : grille de 5 Escales --- */
+.ateliers-programme {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .ateliers-programme { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .ateliers-programme { grid-template-columns: repeat(3, 1fr); }
+}
+
+.ateliers-escale {
+  background-color: var(--color-creme-clair);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  border: var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.ateliers-escale:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.ateliers-escale__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(181, 192, 167, 0.25);
+  color: var(--atelier-accent, var(--color-terre-saturee));
+  margin-bottom: var(--space-xs);
+}
+
+.ateliers-escale__icon svg { width: 24px; height: 24px; }
+
+.ateliers-escale__date {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-terre-saturee);
+  margin-bottom: 0;
+}
+
+.ateliers-escale h3 { margin-bottom: 0; }
+
+.ateliers-escale__desc {
+  color: var(--color-prune-leger);
+  margin-bottom: var(--space-sm);
+}
+
+.ateliers-escale .btn { margin-top: auto; align-self: flex-start; }
+
+/* --- Informations pratiques --- */
+.ateliers-infos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  align-items: flex-start;
+}
+
+.ateliers-infos .info-list {
+  font-size: var(--fs-body);
+  color: var(--color-prune-profond);
+  gap: var(--space-sm);
+}
+
+.ateliers-infos .info-list li { padding-left: 1.25rem; }
+.ateliers-infos .info-list li::before { top: 0.7em; }
+
+/* --- Ligne complémentaire (Chœurs) --- */
+.ateliers-complementaire {
+  font-size: var(--fs-small);
+  color: var(--color-prune-leger);
+  margin-top: var(--space-md);
+}
+
+/* Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  .ateliers-escale { transition: none; }
+  .ateliers-escale:hover { transform: none; }
+}
+
+/* --- Rappel discret des Ateliers dans le hero de l'accueil (index.html) --- */
+.hero-announce {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 0.4rem 0.4rem 0.4rem 0.5rem;
+  border: 1px solid rgba(74, 47, 56, 0.14);
+  border-radius: 999px;
+  background-color: var(--color-creme-clair);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  font-size: var(--fs-small);
+  line-height: 1.2;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.hero-announce:hover,
+.hero-announce:focus-visible {
+  border-color: var(--color-terre-claire);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.hero-announce__tag {
+  flex-shrink: 0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background-color: var(--color-sauge-pale);
+  color: var(--color-sauge-fonce);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-announce__text {
+  color: var(--color-prune-profond);
+  font-weight: 500;
+}
+
+.hero-announce__arrow {
+  flex-shrink: 0;
+  color: var(--color-terre-saturee);
+  transition: transform var(--transition);
+}
+
+.hero-announce:hover .hero-announce__arrow {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-announce,
+  .hero-announce:hover,
+  .hero-announce__arrow,
+  .hero-announce:hover .hero-announce__arrow { transform: none; }
+}
