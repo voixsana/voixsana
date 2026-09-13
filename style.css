@@ -995,6 +995,11 @@ strong { font-weight: 500; }
   color: var(--color-prune-leger);
 }
 
+/* Dans les cartes tarifs, le texte s'aligne sur celui de la carte "appel découverte" */
+.pricing-grid .info-list {
+  font-size: inherit;
+}
+
 .info-list li {
   margin-bottom: 0;
   padding-left: 1.1rem;
