@@ -1532,16 +1532,11 @@ strong { font-weight: 500; }
 
 /* --- Hero saisonnier --- */
 .ateliers-hero {
-  /* Fond crème de secours si l'image de saison n'existe pas encore : le scrim reste lisible */
   background-color: var(--color-creme);
   background-image:
     linear-gradient(
       var(--atelier-scrim-top, rgba(251, 247, 241, 0.80)),
-      var(--atelier-scrim-bottom, rgba(251, 247, 241, 0.93))),
-    var(--atelier-bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+      var(--atelier-scrim-bottom, rgba(251, 247, 241, 0.93)));
   padding-top: var(--space-xl);
 }
 
