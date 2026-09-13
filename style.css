@@ -38,6 +38,7 @@
   /* Layout */
   --max-width-content: 720px;
   --max-width-wide: 1100px;
+  --max-width-media: 480px;
   --border-radius: 12px;
   --border-radius-lg: 20px;
   --transition: 200ms ease;
@@ -280,7 +281,8 @@ strong { font-weight: 500; }
 .nav-links {
   display: none;
   align-items: center;
-  gap: var(--space-lg);
+  /* Resserré près de 900px : à gap fixe, les 7 liens + le bouton débordent */
+  gap: clamp(1.25rem, 0.4rem + 2.4vw, var(--space-lg));
   list-style: none;
   padding: 0;
   margin: 0;
@@ -291,6 +293,7 @@ strong { font-weight: 500; }
   font-weight: 500;
   color: var(--color-prune-profond);
   text-decoration: none;
+  white-space: nowrap;
   transition: color var(--transition);
 }
 
@@ -698,7 +701,7 @@ strong { font-weight: 500; }
   align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .hero-layout {
     grid-template-columns: 1fr 1fr;
   }
@@ -735,7 +738,7 @@ strong { font-weight: 500; }
   font-size: clamp(2.5rem, 5.5vw + 1rem, 4.25rem);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .hero-layout h1 {
     font-size: clamp(2.25rem, 3vw + 0.75rem, 3.25rem);
   }
@@ -750,7 +753,6 @@ strong { font-weight: 500; }
 .hero-layout > div:first-child > p {
   font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.2rem);
   color: var(--color-prune-leger);
-  max-width: 48ch;
   line-height: 1.7;
   margin-bottom: 0;
 }
@@ -771,12 +773,20 @@ strong { font-weight: 500; }
   background-color: var(--color-sable-clair);
 }
 
-.image-frame img {
+/* La vidéo doit être dimensionnée comme les images : sinon elle plafonne à sa
+   taille intrinsèque et laisse voir le fond du cadre quand celui-ci est plus grand */
+.image-frame img,
+.image-frame video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
+/* En plein écran le cadre disparaît : recadrer couperait l'image */
+.image-frame video:-webkit-full-screen { object-fit: contain; }
+.image-frame video:-moz-full-screen    { object-fit: contain; }
+.image-frame video:fullscreen          { object-fit: contain; }
 
 /* Hero image proportions */
 .hero-layout .image-frame {
@@ -787,16 +797,29 @@ strong { font-weight: 500; }
   justify-content: center;
 }
 
+/* Empilé : les médias gardent une taille bornée et se centrent au lieu de s'étirer
+   sur toute la largeur — le texte, lui, occupe toute la colonne */
+@media (max-width: 899px) {
+  .hero-layout .image-frame,
+  .section-pratique .split-layout > div:last-child,
+  .sonia-images,
+  .testimonial {
+    max-width: var(--max-width-media);
+    margin-inline: auto;
+  }
+}
+
 /* --- Split layout (2 colonnes) --- */
 
+/* La colonne la plus courte est centrée sur la hauteur de l'autre */
 .split-layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-xl);
-  align-items: start;
+  align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .split-layout {
     grid-template-columns: 1fr 1fr;
   }
@@ -809,7 +832,7 @@ strong { font-weight: 500; }
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .section-pratique .split-layout {
     grid-template-columns: 3fr 2fr;
   }
@@ -842,15 +865,15 @@ strong { font-weight: 500; }
   margin-top: var(--space-sm);
 }
 
-/* Sonia : colonnes qui s'alignent sur la hauteur du texte */
+/* Sonia : empilé sous 900px, sinon texte dans la colonne large — en dessous, la
+   colonne texte deviendrait bien plus haute que les images (grand vide à côté) */
 .section-sonia .split-layout {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .section-sonia .split-layout {
-    grid-template-columns: 2fr 3fr;
-    align-items: stretch;
+    grid-template-columns: 3fr 2fr;
   }
 }
 
@@ -861,36 +884,19 @@ strong { font-weight: 500; }
   gap: var(--space-sm);
 }
 
-/* Mobile : ratios fixes */
-.sonia-images .image-frame:first-child {
+/* Empilé : ratios fixes */
+.sonia-images > .image-frame:first-child {
   aspect-ratio: 8 / 5;
 }
 
-.sonia-images .image-frame:first-child img {
+.sonia-images > .image-frame:first-child img {
   object-position: top center;
 }
 
-/* Desktop : les images s'étirent pour remplir exactement la hauteur du texte */
-@media (min-width: 768px) {
-  .sonia-images {
-    height: 100%;
-  }
-
-  .sonia-images .image-frame:first-child {
-    flex: 3;
-    aspect-ratio: unset;
-    min-height: 0;
-  }
-
-  .sonia-seance-card {
-    flex: 2;
-    min-height: 0;
-  }
-
-  .sonia-seance-card .image-wrap {
-    aspect-ratio: unset;
-    flex: 1;
-    min-height: 0;
+/* Deux colonnes : portrait un peu plus haut */
+@media (min-width: 900px) {
+  .sonia-images > .image-frame:first-child {
+    aspect-ratio: 4 / 3;
   }
 }
 
@@ -925,12 +931,7 @@ strong { font-weight: 500; }
   gap: var(--space-md);
 }
 
-@media (min-width: 640px) {
-  .grid-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Pas d'étape à 2 colonnes : les blocs ont 3 cartes, ça laisserait une orpheline */
 @media (min-width: 900px) {
   .grid-cards {
     grid-template-columns: repeat(3, 1fr);
@@ -946,7 +947,9 @@ strong { font-weight: 500; }
   margin-bottom: var(--space-lg);
 }
 
-@media (min-width: 640px) {
+/* Sous 900px, deux colonnes ne respectent pas la largeur mini des cartes (~313px)
+   et la grille déborde à droite */
+@media (min-width: 900px) {
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1327,7 +1330,7 @@ strong { font-weight: 500; }
   gap: var(--space-xl);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
