@@ -694,7 +694,7 @@ strong { font-weight: 500; }
 
 /* --- Fonds des sections — alternance pour éviter deux fonds identiques adjacents --- */
 
-.hero                   { background-color: var(--color-creme); padding-top: calc(var(--space-xxl) + var(--space-lg)); }
+.hero                   { background-color: var(--color-creme); padding-top: var(--space-xl); }
 .section-accompagnement { background-color: var(--color-creme-clair); }    /* 2 — cartes sable/sauge/terre se détachent */
 .section-pratique       { background-color: var(--color-creme); }          /* 3 */
 .section-sonia          { background-color: var(--color-creme-clair); }    /* 4 */
@@ -1631,6 +1631,19 @@ strong { font-weight: 500; }
   font-size: var(--fs-small);
   font-weight: 500;
   color: var(--color-prune-profond);
+}
+
+/* Lien Google Maps du lieu : même typo que les autres faits, souligné pour signaler le clic */
+.ateliers-facts a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--atelier-accent, var(--color-terre-claire));
+}
+
+.ateliers-facts a:hover,
+.ateliers-facts a:focus-visible {
+  color: var(--atelier-accent, var(--color-terre-saturee));
 }
 
 .ateliers-facts svg {
